@@ -1,0 +1,64 @@
+<app-loading *ngIf="isLoading"></app-loading>
+<div
+  *ngIf="error"
+  class="alert alert-danger p-1 fixed-top w-100 rounded-0"
+  role="alert"
+>
+  <small>{{ error }}</small>
+</div>
+<div class="main">
+  <form #f="ngForm" (ngSubmit)="handleSubmit(f)">
+    <!-- Headings for the form -->
+    <div
+      class="headingsContainer d-flex align-items-end justify-content-center"
+    >
+      <img src="../../assets/logo.jpg" class="logo" />
+      <h2>MyTodo</h2>
+    </div>
+    <hr />
+    <div class="d-flex justify-content-center">
+      <p>Login in with your Email and password</p>
+    </div>
+    <!-- Main container for all inputs -->
+    <div class="mainContainer">
+      <div *ngIf="error" class="alert alert-danger p-1" role="alert">
+        {{ error }}
+      </div>
+      <!-- Username -->
+      <label for="username">Your Email</label>
+      <input
+        type="email"
+        placeholder="Enter Email"
+        name="email"
+        ngModel
+        required
+      />
+
+      <br />
+
+      <!-- Password -->
+      <label for="pswrd">Your Password</label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        ngModel
+        required
+      />
+
+      <!-- Submit button -->
+      <button
+        [disabled]="isLoading"
+        [style.opacity]="isLoading ? 0.5 : 1"
+        type="submit"
+      >
+        Login
+      </button>
+      <div class="d-flex">
+        <p>Don't have account ?</p>
+        &nbsp;
+        <a routerLink="/register">Register</a>
+      </div>
+    </div>
+  </form>
+</div>
