@@ -21,6 +21,7 @@ export class TodaysTaskComponent implements OnInit {
   data: any[] = [];
   selectedTask: any;
   isEdit: boolean = false;
+  mdData: any;
 
   constructor(
     config: NgbModalConfig,
@@ -36,9 +37,20 @@ export class TodaysTaskComponent implements OnInit {
       if (res.success) {
         this.isLoading = false;
         this.data = res.data;
-        console.log(this.data);
+        this.convertIntoMultiDim(res.data);
       }
     });
+  }
+
+  convertIntoMultiDim(arr: any) {
+    this.mdData = arr.reduce((acc: any, curr: any, i: number) => {
+      const index = i % 4;
+      if (!acc[index]) {
+        acc[index] = [];
+      }
+      acc[index].push(curr);
+      return acc;
+    }, []);
   }
 
   public get doneTasksLength(): number {
@@ -122,6 +134,7 @@ export class TodaysTaskComponent implements OnInit {
         this.uploadingProgress = '';
         this.close();
         this.data = [res.data, ...this.data];
+        this.convertIntoMultiDim(this.data);
         // alert('added task');
       }
     });
@@ -141,6 +154,7 @@ export class TodaysTaskComponent implements OnInit {
             }
             return item;
           });
+          this.convertIntoMultiDim(this.data);
           // alert('added task');
         }
       });
@@ -173,6 +187,7 @@ export class TodaysTaskComponent implements OnInit {
       this.data = this.data.filter(
         (item: any) => item._id != this.selectedTask._id
       );
+      this.convertIntoMultiDim(this.data);
     });
   }
 
@@ -192,6 +207,7 @@ export class TodaysTaskComponent implements OnInit {
           }
           return item;
         });
+        this.convertIntoMultiDim(this.data);
       });
   }
 
