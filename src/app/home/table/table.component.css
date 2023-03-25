@@ -1,0 +1,22 @@
+.table-image {
+  height: 60px;
+  object-fit: contain;
+}
+.cutoff-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.task-modal {
+  display: flex;
+  justify-content: space-between;
+}
+.task-modal-image {
+  width: 50%;
+  height: 100%;
+  object-fit: contain;
+}
+/* .task-modal div {
+  width: 48%;
+} */

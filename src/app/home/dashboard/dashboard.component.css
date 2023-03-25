@@ -1,0 +1,20 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.mycard {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 6px gainsboro;
+  width: 95%;
+  margin: auto;
+}
+@media screen and (max-width: 600px) {
+  .cards {
+    display: block;
+  }
+  .mycard {
+    margin-bottom: 15px;
+  }
+}

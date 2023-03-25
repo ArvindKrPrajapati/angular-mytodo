@@ -9,6 +9,7 @@ import { PreviousPendingComponent } from './previous-pending/previous-pending.co
 import { PreviousDoneComponent } from './previous-done/previous-done.component';
 import { FormsModule } from '@angular/forms';
 import { LoadingModule } from '../common/components/loading/loading.module';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { LoadingModule } from '../common/components/loading/loading.module';
     TodaysTaskComponent,
     PreviousPendingComponent,
     PreviousDoneComponent,
+    TableComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, FormsModule, LoadingModule],
 })

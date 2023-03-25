@@ -1,0 +1,52 @@
+<div class="p-2 mt-4 bg-white table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Sl No.</th>
+        <th scope="col">Task Description (If any)</th>
+        <th scope="col">Task Image (If any)</th>
+        <th scope="col">Created on</th>
+        <th scope="col">Updated on</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of data; index as i" (click)="open(content, d)">
+        <th scope="row">{{ skip + i + 1 }}</th>
+        <td scope="row" style="max-width: 60px">
+          <p class="cutoff-text">{{ d.task || "NA" }}</p>
+        </td>
+        <td scope="row">
+          <div class="d-flex justify-content-center">
+            <img *ngIf="d.image" [src]="d.image" class="table-image" />
+            <p *ngIf="!d.image">NA</p>
+          </div>
+        </td>
+        <td scope="row">{{ formatDate(d.date) }}</td>
+        <td scope="row">{{ formatDate(d.updatedAt) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- model -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Today's Task</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="task-modal">
+      <div *ngIf="selectedTask.image">
+        <img [src]="selectedTask.image" class="task-modal-image" />
+      </div>
+      <div *ngIf="selectedTask.task">
+        <p class="selected-task">{{ selectedTask.task }}</p>
+      </div>
+    </div>
+  </div>
+</ng-template>

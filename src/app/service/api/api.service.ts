@@ -48,6 +48,23 @@ export class ApiService {
     });
   }
 
+  getCompletedTask(skip: number, limit: number) {
+    return this._http.get(
+      this.url + '/todo/completed-todo?skip=' + skip + '&limit=' + limit,
+      {
+        headers: new HttpHeaders({ Authorization: 'Bearer ' + this.token() }),
+      }
+    );
+  }
+  getPendingTask(skip: number, limit: number) {
+    return this._http.get(
+      this.url + '/todo/pending-todo?skip' + skip + '&limit=' + limit,
+      {
+        headers: new HttpHeaders({ Authorization: 'Bearer ' + this.token() }),
+      }
+    );
+  }
+
   changeDoneStatus(data: any) {
     return this._http.patch(this.url + '/todo/change-done-status', data, {
       headers: new HttpHeaders({ Authorization: 'Bearer ' + this.token() }),
