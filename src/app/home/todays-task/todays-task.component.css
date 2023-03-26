@@ -13,7 +13,6 @@
   box-sizing: border-box;
   background-color: white;
   border-radius: 8px;
-  padding: 5px;
   width: 95%;
   box-shadow: 0px 0px 10px silver;
   white-space: pre-wrap;
@@ -42,6 +41,20 @@ ul li a {
 ul hr {
   margin: 2px;
 }
+.task-modal {
+  display: flex;
+  justify-content: space-between;
+}
+.task-modal-image {
+  max-height: 75vh;
+  object-fit: contain;
+  background-color: #eee;
+  border-radius: 5px;
+}
+.selected-task {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
 @media screen and (max-width: 600px) {
   .grid-container {
     display: block;
@@ -52,5 +65,8 @@ ul hr {
   .grid-item {
     width: 100%;
     margin: 8px 0;
+  }
+  .task-modal {
+    display: block;
   }
 }

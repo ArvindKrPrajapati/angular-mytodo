@@ -1,3 +1,8 @@
+<div class="add-btn-div" *ngIf="pending">
+  <button class="btn btn-success add-btn" (click)="openAddModal(add)">
+    Add
+  </button>
+</div>
 <div class="p-2 mt-4 bg-white table-responsive">
   <table class="table table-striped">
     <thead>
@@ -10,7 +15,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let d of data; index as i" (click)="open(content, d)">
+      <tr
+        *ngFor="let d of data; index as i"
+        (click)="openDetailsModal(content, d)"
+      >
         <th scope="row">{{ skip + i + 1 }}</th>
         <td scope="row" style="max-width: 60px">
           <p class="cutoff-text">{{ d.task || "NA" }}</p>
@@ -28,25 +36,153 @@
   </table>
 </div>
 
-<!-- model -->
-<ng-template #content let-c="close" let-d="dismiss">
+<!-- add modal -->
+<ng-template #add let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Add Today's Task</h4>
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ isEdit ? "Edit Task" : "Add Task" }}
+    </h4>
     <button
       type="button"
       class="btn-close"
       aria-label="Close"
-      (click)="d('Cross click')"
+      (click)="closeAddModal()"
+      *ngIf="!saving"
     ></button>
+  </div>
+  <div *ngIf="pending" class="modal-body">
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input
+        type="datetime-local"
+        class="form-control mt-2 mb-3"
+        id="date"
+        name="date"
+        [(ngModel)]="date"
+      />
+    </div>
+    <div class="form-group">
+      <label for="task">Task Description</label>
+      <textarea
+        class="form-control mt-2 mb-3"
+        id="task"
+        rows="4"
+        style="resize: none"
+        name="task"
+        [(ngModel)]="task"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="image">Image Description</label>
+      <input
+        type="file"
+        class="form-control mt-2 mb-3"
+        id="image"
+        accept="image/*"
+        (change)="handleFile($event)"
+        [disabled]="saving"
+      />
+      <div class="mt-2 mb-3" *ngIf="imageURL && imageURL !== ''">
+        <img
+          style="width: 100%; height: 120px; object-fit: contain"
+          [src]="imageURL"
+        />
+        <b *ngIf="uploadingProgress" class="mt-2 mb-2">
+          {{ uploadingProgress }}
+        </b>
+      </div>
+    </div>
+    <button
+      (click)="handleSubmit()"
+      type="button"
+      class="btn btn-success"
+      style="float: right"
+      [disabled]="saving"
+      *ngIf="!isEdit"
+    >
+      Save
+    </button>
+    <button
+      (click)="handleEdit()"
+      type="button"
+      class="btn btn-success"
+      style="float: right"
+      [disabled]="saving"
+      *ngIf="isEdit"
+    >
+      Save Edited
+    </button>
+    <button
+      type="button"
+      *ngIf="imageURL"
+      class="btn btn-danger m-2 mt-0 mb-0"
+      style="float: right"
+      (click)="removeImage()"
+      [disabled]="saving"
+    >
+      Remove Image
+    </button>
+  </div>
+</ng-template>
+
+<!-- model -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <app-loading *ngIf="isLoading"></app-loading>
+
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Task Details</h4>
+    <div class="d-flex align-items-center">
+      <a
+        (click)="markTask()"
+        class="p-2 pt-0 pb-0 text-dark text-decoration-none d-flex align-items-center"
+      >
+        <span class="icon">
+          <svg width="24px" class="icon" fill="black" viewBox="0 0 24 24">
+            <path
+              d="M19,19H5V5H15V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V11H19M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"
+            />
+          </svg>
+        </span>
+        <span class="ml-1">{{ selectedTask.done ? "Undone" : "Done" }}</span>
+      </a>
+      <a *ngIf="pending" (click)="editTask(add)" class="p-2 pt-0 pb-0">
+        <svg width="24px" class="icon" fill="black" viewBox="0 0 24 24">
+          <path
+            d="M19,3H18V1H16V3H8V1H6V3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H10V19H5V8H19V9H21V5A2,2 0 0,0 19,3M21.7,13.35L20.7,14.35L18.65,12.35L19.65,11.35C19.85,11.14 20.19,11.13 20.42,11.35L21.7,12.63C21.89,12.83 21.89,13.15 21.7,13.35M12,18.94L18.07,12.88L20.12,14.88L14.06,21H12V18.94Z"
+          />
+        </svg>
+      </a>
+      <a (click)="deleteTask()" class="p-2 pt-0 pb-0">
+        <svg width="24px" class="icon" fill="red" viewBox="0 0 24 24">
+          <path
+            d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
+          />
+        </svg>
+      </a>
+
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="closeDetailsModal()"
+      ></button>
+    </div>
   </div>
   <div class="modal-body">
     <div class="task-modal">
-      <div *ngIf="selectedTask.image">
-        <img [src]="selectedTask.image" class="task-modal-image" />
-      </div>
-      <div *ngIf="selectedTask.task">
-        <p class="selected-task">{{ selectedTask.task }}</p>
-      </div>
+      <img
+        [style.width]="selectedTask.task ? '50%' : '100%'"
+        *ngIf="selectedTask.image"
+        [src]="selectedTask.image"
+        class="task-modal-image d-block"
+      />
+      <p
+        [style.width]="selectedTask.image ? '50%' : '100%'"
+        *ngIf="selectedTask.task"
+        class="selected-task d-block p-2"
+      >
+        {{ selectedTask.task }}
+      </p>
     </div>
   </div>
 </ng-template>

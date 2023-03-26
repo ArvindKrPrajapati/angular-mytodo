@@ -13,10 +13,22 @@
   justify-content: space-between;
 }
 .task-modal-image {
-  width: 50%;
-  height: 100%;
+  max-height: 75vh;
   object-fit: contain;
+  background-color: #eee;
+  border-radius: 5px;
 }
-/* .task-modal div {
-  width: 48%;
-} */
+.selected-task {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+.add-btn-div {
+  display: flex;
+  justify-content: end;
+  margin-top: -40px;
+}
+@media screen and (max-width: 600px) {
+  .task-modal {
+    display: block;
+  }
+}

@@ -73,6 +73,11 @@ export class TodaysTaskComponent implements OnInit {
     this.modalRef.close();
   }
 
+  formatDate(d: Date) {
+    const dateTime = new Date(d);
+    return dateTime.toLocaleString();
+  }
+
   handleSubmit(): void {
     if (this.task || this.imageEvent) {
       this.saving = true;
@@ -176,7 +181,10 @@ export class TodaysTaskComponent implements OnInit {
   }
   openMenu(content: any, item: any) {
     this.selectedTask = item;
-    this.open(content);
+    this.modalRef = this.modalService.open(content, {
+      size: 'xl',
+      scrollable: true,
+    });
   }
 
   deleteTask() {

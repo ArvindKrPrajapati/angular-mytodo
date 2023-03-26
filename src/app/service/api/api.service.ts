@@ -24,6 +24,12 @@ export class ApiService {
     return this._http.post(this.url + '/auth/signup', data);
   }
 
+  dashboard() {
+    return this._http.get(this.url + '/todo/dashboard', {
+      headers: new HttpHeaders({ Authorization: 'Bearer ' + this.token() }),
+    });
+  }
+
   uploadToCloudinary(data: any) {
     return this._http.post(this.upurl, data, {
       reportProgress: true,
