@@ -31,10 +31,16 @@ export class SignupComponent {
     }
     this.error = '';
     this.isLoading = true;
-    this._api.signup({ email, name, password }).subscribe((res: any) => {
-      localStorage.setItem('token', res.token);
-      localStorage.setItem('user', JSON.stringify(res.data));
-      this._router.navigate(['/']);
-    });
+    this._api.signup({ email, name, password }).subscribe(
+      (res: any) => {
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('user', JSON.stringify(res.data));
+        this._router.navigate(['/']);
+      },
+      (err: any) => {
+        this.isLoading = false;
+        this.error = err.error.error || 'Something went wrong';
+      }
+    );
   }
 }

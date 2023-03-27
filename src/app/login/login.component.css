@@ -1,135 +1,132 @@
 .main {
-    font-family: sans-serif;
-    background: -webkit-linear-gradient(to right, var(--primary), var(--secondary));
-    background: linear-gradient(to right, var(--primary), var(--secondary));
-    color: whitesmoke;
-    height: 100%;
-    display: flex;
+  font-family: sans-serif;
+  color: whitesmoke;
+  height: 100%;
+  display: flex;
 }
-
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
-a{
-    color: #030804;
-    font-weight: bold;
-    text-decoration: none;
+a {
+  color: #030804;
+  font-weight: bold;
+  text-decoration: none;
 }
 form {
-    width: 30rem;
-    margin: auto;
-    color: whitesmoke;
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(11, 15, 13, 0.582);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.125);
-    padding: 25px 25px;
+  width: 30rem;
+  margin: auto;
+  color: whitesmoke;
+  /* backdrop-filter: blur(30px) saturate(180%); */
+  /* -webkit-backdrop-filter: blur(16px) saturate(180%); */
+  background-color: rgba(3, 3, 3, 0.582);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 25px 25px;
 }
 
 input {
-    width: 100%;
-    margin: 10px 0;
-    border-radius: 8px;
-    padding: 10px 18px;
-    box-sizing: border-box;
-    border: none;
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 8px;
+  padding: 10px 18px;
+  box-sizing: border-box;
+  border: none;
 }
-input:focus{
-    outline: none;
+input:focus {
+  outline: none;
 }
 
 button {
-    background-color: #030804;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 9px;
-    margin: 10px 0;
-    width: 100%;
-    font-size: 18px;
+  background-color: rgb(25, 207, 220);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 9px;
+  margin: 10px 0;
+  width: 100%;
+  font-size: 18px;
+  border: none;
 }
 
 .logo {
-    width: 60px;
-    height: 60px;
-    margin: 10px 0;
-    border-radius: 5px;
-    margin-right: 15px;
+  width: 60px;
+  height: 60px;
+  margin: 10px 0;
+  border-radius: 5px;
+  margin-right: 15px;
 }
 
 button:hover {
-    opacity: 0.6;
-    cursor: pointer;
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .headingsContainer {
-    text-align: center;
+  text-align: center;
 }
 
 .headingsContainer p {
-    color: gray;
+  color: gray;
 }
 
 .mainContainer {
-    padding: 16px;
+  padding: 16px;
 }
 
-
 .subcontainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .subcontainer a {
-    font-size: 16px;
-    margin-bottom: 12px;
+  font-size: 16px;
+  margin-bottom: 12px;
 }
 
 span.forgotpsd a {
-    float: right;
-    color: whitesmoke;
-    padding-top: 16px;
+  float: right;
+  color: whitesmoke;
+  padding-top: 16px;
 }
 
 .forgotpsd a {
-    color: rgb(74, 146, 235);
+  color: rgb(74, 146, 235);
 }
 
 .forgotpsd a:link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .register {
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
 .register a {
-    color: rgb(74, 146, 235);
+  color: rgb(74, 146, 235);
 }
 
 .register a:link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* Media queries for the responsiveness of the page */
 @media screen and (max-width: 600px) {
-    form {
-        width: 25rem;
-    }
+  form {
+    width: 25rem;
+  }
 }
 
 @media screen and (max-width: 400px) {
-    form {
-        width: 20rem;
-        border: none;
-        width: 100%;
-        height: 100%;
-        padding: 30px;
-        border-radius: 0;
-    }
+  form {
+    width: 20rem;
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    border-radius: 0;
+  }
 }

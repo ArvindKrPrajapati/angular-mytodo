@@ -12,9 +12,15 @@ import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { ApiService } from './service/api/api.service';
 import { LoadingModule } from './common/components/loading/loading.module';
 import { NgChartsModule } from 'ng2-charts';
+import { StarryComponent } from './common/components/starry/starry.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SignupComponent,
+    StarryComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
