@@ -10,25 +10,19 @@ import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { ApiService } from './service/api/api.service';
-import { LoadingModule } from './common/components/loading/loading.module';
 import { NgChartsModule } from 'ng2-charts';
-import { StarryComponent } from './common/components/starry/starry.component';
+import { SharedModule } from './common/components/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    SignupComponent,
-    StarryComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, SignupComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
     HttpClientModule,
-    LoadingModule,
     NgChartsModule,
+    SharedModule,
   ],
   providers: [AuthGuardService, ApiService],
   bootstrap: [AppComponent],

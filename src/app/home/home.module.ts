@@ -8,9 +8,9 @@ import { TodaysTaskComponent } from './todays-task/todays-task.component';
 import { PreviousPendingComponent } from './previous-pending/previous-pending.component';
 import { PreviousDoneComponent } from './previous-done/previous-done.component';
 import { FormsModule } from '@angular/forms';
-import { LoadingModule } from '../common/components/loading/loading.module';
 import { TableComponent } from './table/table.component';
 import { NgChartsModule } from 'ng2-charts';
+import { SharedModule } from '../common/components/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { NgChartsModule } from 'ng2-charts';
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    LoadingModule,
+    SharedModule,
     NgChartsModule,
   ],
 })
