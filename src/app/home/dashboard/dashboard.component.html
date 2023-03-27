@@ -1,24 +1,67 @@
 <app-loading *ngIf="loading"></app-loading>
 <div class="dashboard p-3">
   <div class="cards">
-    <div class="mycard">
+    <a routerLink="/todays-task" class="mycard">
       Today's Pending
-      <h6 class="">{{ data.pendingToday || 0 }}</h6>
-    </div>
+      <h4 class="">{{ data?.pendingToday || 0 }}</h4>
+    </a>
 
-    <div class="mycard">
+    <a routerLink="/todays-task" class="mycard">
       Today's Done
-      <h6 class="">{{ data.doneToday || 0 }}</h6>
-    </div>
+      <h4 class="">{{ data?.doneToday || 0 }}</h4>
+    </a>
 
-    <div class="mycard">
-      Total Done
-      <h6 class="">{{ data.done || 0 }}</h6>
-    </div>
+    <a routerLink="/previous-done" class="mycard">
+      Overall Done
+      <h4 class="">{{ data?.done || 0 }}</h4>
+    </a>
 
-    <div class="mycard">
+    <a routerLink="/previous-pending" class="mycard">
       Overall Pending
-      <h6 class="">{{ data.pending || 0 }}</h6>
+      <h4 class="">{{ data?.pending || 0 }}</h4>
+    </a>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="bg-white p-2 m-2 mt-4">
+        <h5 class="p-1">Overall Pending</h5>
+        <div>
+          <canvas
+            baseChart
+            [type]="'line'"
+            [datasets]="pendingChartData"
+            [labels]="lineChartLabels"
+            [options]="{ responsive: true, maintainAspectRatio: false }"
+          ></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="bg-white p-2 m-2 mt-4">
+        <h5 class="p-1">Overall Done</h5>
+        <div>
+          <canvas
+            baseChart
+            [type]="'line'"
+            [datasets]="doneChartData"
+            [labels]="lineChartLabels"
+            [options]="{ responsive: true, maintainAspectRatio: false }"
+          ></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white p-2 m-2 mt-4">
+    <h5 class="p-1">Tasks</h5>
+    <div>
+      <canvas
+        baseChart
+        [type]="'bar'"
+        [datasets]="barChartData.datasets"
+        [labels]="barChartData.labels"
+        [options]="{ responsive: true, maintainAspectRatio: false }"
+      ></canvas>
     </div>
   </div>
 </div>

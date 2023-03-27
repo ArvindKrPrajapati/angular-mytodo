@@ -9,6 +9,9 @@
   box-shadow: 0 0 6px gainsboro;
   width: 95%;
   margin: auto;
+  color: black;
+  text-decoration: none;
+  display: block;
 }
 @media screen and (max-width: 600px) {
   .cards {

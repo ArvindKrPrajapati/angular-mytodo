@@ -11,6 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { ApiService } from './service/api/api.service';
 import { LoadingModule } from './common/components/loading/loading.module';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, SignupComponent],
@@ -21,6 +22,7 @@ import { LoadingModule } from './common/components/loading/loading.module';
     FormsModule,
     HttpClientModule,
     LoadingModule,
+    NgChartsModule,
   ],
   providers: [AuthGuardService, ApiService],
   bootstrap: [AppComponent],
