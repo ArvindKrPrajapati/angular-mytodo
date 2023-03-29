@@ -44,10 +44,13 @@ ul {
   display: block;
   padding: 8px 15px;
   border-bottom: 1px solid #161d27;
-  color: rgb(241, 237, 237);
+  color: grey;
   font-size: 14px;
   position: relative;
   text-decoration: none;
+}
+.bg {
+  display: none;
 }
 
 .wrapper .sidebar ul li a .icon {
@@ -58,16 +61,14 @@ ul {
 
 .wrapper .sidebar ul li a:hover,
 .wrapper .sidebar ul li a.active {
-  color: #0c7db1;
-
-  background: white;
+  color: #fff;
   border-right: 1px solid rgb(5, 68, 104);
 }
 
 .wrapper .sidebar ul li a:hover .icon,
 .wrapper .sidebar ul li a.active .icon {
   color: #0c7db1;
-  fill: #0c7db1;
+  fill: #fff;
 }
 
 .wrapper .sidebar ul li a:hover:before,
@@ -144,8 +145,18 @@ ul {
   input[type="checkbox"]:checked ~ .sidebar {
     left: 0px;
   }
+  input[type="checkbox"]:checked ~ .bg {
+    display: block;
+  }
 
   .logout {
     height: 30%;
+  }
+  .bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.2);
   }
 }

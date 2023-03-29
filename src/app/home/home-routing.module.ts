@@ -25,11 +25,11 @@ const routes: Routes = [
         component: TodaysTaskComponent,
       },
       {
-        path: 'previous-pending',
+        path: 'overall-pending',
         component: PreviousPendingComponent,
       },
       {
-        path: 'previous-done',
+        path: 'overall-done',
         component: PreviousDoneComponent,
       },
     ],

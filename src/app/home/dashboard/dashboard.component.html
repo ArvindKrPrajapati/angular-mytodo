@@ -21,47 +21,34 @@
       <h4 class="">{{ data?.pending || 0 }}</h4>
     </a>
   </div>
-  <div class="row">
+  <div class="row gx-3 p-2">
     <div class="col-12 col-md-6">
-      <div class="bg-white p-2 m-2 mt-4">
+      <div class="bg-white p-2">
         <h5 class="p-1">Overall Pending</h5>
         <div>
           <canvas
             baseChart
             [type]="'line'"
-            [datasets]="pendingChartData"
+            [datasets]="chartData"
             [labels]="lineChartLabels"
             [options]="{ responsive: true, maintainAspectRatio: false }"
           ></canvas>
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-6">
-      <div class="bg-white p-2 m-2 mt-4">
-        <h5 class="p-1">Overall Done</h5>
+    <div class="col-12 graph col-md-6">
+      <div class="bg-white p-2">
+        <h5 class="p-1">Task Distibution</h5>
         <div>
           <canvas
             baseChart
-            [type]="'line'"
-            [datasets]="doneChartData"
-            [labels]="lineChartLabels"
+            [type]="'bar'"
+            [datasets]="barChartData.datasets"
+            [labels]="barChartData.labels"
             [options]="{ responsive: true, maintainAspectRatio: false }"
           ></canvas>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="bg-white p-2 m-2 mt-4">
-    <h5 class="p-1">Tasks</h5>
-    <div>
-      <canvas
-        baseChart
-        [type]="'bar'"
-        [datasets]="barChartData.datasets"
-        [labels]="barChartData.labels"
-        [options]="{ responsive: true, maintainAspectRatio: false }"
-      ></canvas>
     </div>
   </div>
 </div>

@@ -13,11 +13,15 @@
   text-decoration: none;
   display: block;
 }
+
 @media screen and (max-width: 600px) {
   .cards {
     display: block;
   }
   .mycard {
     margin-bottom: 15px;
+  }
+  .graph {
+    margin-top: 10px;
   }
 }

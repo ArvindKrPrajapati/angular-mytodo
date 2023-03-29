@@ -9,8 +9,7 @@ import { ApiService } from 'src/app/service/api/api.service';
 export class DashboardComponent implements OnInit {
   data: any;
   loading: boolean = true;
-  doneChartData: any;
-  pendingChartData: any;
+  chartData: any;
   barChartData: any;
   lineChartLabels: any = [];
 
@@ -47,30 +46,38 @@ export class DashboardComponent implements OnInit {
           ],
         };
         let _pData: any = [];
+        let _total: any = [];
         let _dData: any = [];
+
         let _labels: any = [];
         _d.tasksByDate.map((obj: any) => {
           _labels = [..._labels, obj._id];
           _dData = [..._dData, obj.done];
+          _total = [..._total, obj.total];
           _pData = [..._pData, obj.pending];
         });
         // todays done by todays pending
 
-        this.doneChartData = [
+        // overall done by overall pending
+        this.chartData = [
           {
-            label: 'Tasks',
-            data: _dData,
+            label: 'Total Task',
+            data: _total,
             fill: false,
-            borderColor: 'rgb(75, 192, 192)',
+            borderColor: 'rgb(10, 192, 192)',
             lineTension: 0.1,
           },
-        ];
-        // overall done by overall pending
-        this.pendingChartData = [
           {
-            label: 'Tasks',
+            label: 'Pending Tasks',
             data: _pData,
-            fill: false,
+            fill: true,
+            borderColor: 'rgb(20, 192, 192)',
+            lineTension: 0.1,
+          },
+          {
+            label: 'Done Tasks',
+            data: _dData,
+            fill: true,
             borderColor: 'rgb(75, 192, 192)',
             lineTension: 0.1,
           },

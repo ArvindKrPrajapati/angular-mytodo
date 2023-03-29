@@ -15,8 +15,9 @@
     </div>
     <router-outlet></router-outlet>
   </div>
-  <input type="checkbox" id="menu" #menu />
 
+  <input type="checkbox" id="menu" #menu />
+  <div class="bg" (click)="menu.click()"></div>
   <app-starry for="menu" class="sidebar" id="sidebar">
     <!--profile image & text-->
     <div class="profile">
@@ -32,7 +33,7 @@
           routerLinkActive="active"
         >
           <span class="icon">
-            <svg fill="white" class="icon" width="24px" viewBox="0 0 24 24">
+            <svg fill="grey" class="icon" width="24px" viewBox="0 0 30 30">
               <path
                 d="M13,3V9H21V3M13,21H21V11H13M3,21H11V15H3M3,13H11V3H3V13Z"
               />
@@ -48,7 +49,7 @@
           routerLinkActive="active"
         >
           <span class="icon">
-            <svg fill="white" width="24px" class="icon" viewBox="0 0 24 24">
+            <svg fill="grey" width="24px" class="icon" viewBox="0 0 30 30">
               <path
                 d="M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M16.53,11.06L15.47,10L10.59,14.88L8.47,12.76L7.41,13.82L10.59,17L16.53,11.06Z"
               />
@@ -60,40 +61,40 @@
       <li>
         <a
           (click)="menu.click()"
-          routerLink="previous-pending"
+          routerLink="overall-pending"
           routerLinkActive="active"
         >
           <span class="icon">
-            <svg fill="white" class="icon" width="24px" viewBox="0 0 24 24">
+            <svg fill="grey" class="icon" width="24px" viewBox="0 0 30 30">
               <path
                 d="M15 16.69V13H16.5V15.82L18.94 17.23L18.19 18.53L15 16.69M10.58 20.42L9 22L7.5 20.5L6 22L4.5 20.5L3 22V2L4.5 3.5L6 2L7.5 3.5L9 2L10.5 3.5L12 2L13.5 3.5L15 2L16.5 3.5L18 2L19.5 3.5L21 2V11.1C22.28 12.41 23 14.17 23 16C23 19.87 19.86 23 16 23C14.14 23 12.36 22.26 11.05 20.95C10.88 20.78 10.72 20.61 10.58 20.42M9.72 19.09C9.4 18.43 9.18 17.73 9.07 17H6V15H9.07C9.17 14.29 9.38 13.62 9.68 13H6V11H11.1C12.37 9.76 14.1 9 16 9H6V7H18V9H16C17.05 9 18.07 9.24 19 9.68V4.91H5V19.09H9.72M20.85 16C20.85 13.32 18.67 11.15 16 11.15C14.71 11.15 13.5 11.66 12.57 12.57C11.66 13.5 11.15 14.71 11.15 16C11.15 18.68 13.32 20.85 16 20.85C16.64 20.85 17.27 20.73 17.86 20.5C18.44 20.24 19 19.88 19.43 19.43C19.88 19 20.24 18.44 20.5 17.86C20.73 17.27 20.85 16.64 20.85 16Z"
               />
             </svg>
           </span>
-          <span class="item">Previous Pending</span>
+          <span class="item">Overall Pending</span>
         </a>
       </li>
       <li>
         <a
           (click)="menu.click()"
-          routerLink="previous-done"
+          routerLink="overall-done"
           routerLinkActive="active"
         >
           <span class="icon">
-            <svg fill="white" class="icon" width="24px" viewBox="0 0 24 24">
+            <svg fill="grey" class="icon" width="24px" viewBox="0 0 30 30">
               <path
                 d="M19 3H18V1H16V3H8V1H6V3H5C3.9 3 3 3.9 3 5V19C3 20.11 3.9 21 5 21H19C20.11 21 21 20.11 21 19V5C21 3.9 20.11 3 19 3M19 19H5V9H19V19M5 7V5H19V7H5M10.56 17.46L16.5 11.53L15.43 10.47L10.56 15.34L8.45 13.23L7.39 14.29L10.56 17.46Z"
               />
             </svg>
           </span>
-          <span class="item">Previous Done</span>
+          <span class="item">Overall Done</span>
         </a>
       </li>
       <li>
         <span class="icon"><i class="fas fa-desktop"></i></span>
         <a (click)="logout()">
           <span class="icon">
-            <svg width="24px" class="icon" fill="white" viewBox="0 0 24 24">
+            <svg width="24px" class="icon" fill="grey" viewBox="0 0 30 30">
               <path
                 d="M13,3H11V13H13V3M17.83,5.17L16.41,6.59C18.05,7.91 19,9.9 19,12A7,7 0 0,1 12,19C8.14,19 5,15.88 5,12C5,9.91 5.95,7.91 7.58,6.58L6.17,5.17C2.38,8.39 1.92,14.07 5.14,17.86C8.36,21.64 14.04,22.1 17.83,18.88C19.85,17.17 21,14.65 21,12C21,9.37 19.84,6.87 17.83,5.17Z"
               />

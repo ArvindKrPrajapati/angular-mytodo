@@ -91,12 +91,9 @@ export class TableComponent {
       })
       .subscribe((res: any) => {
         this.isLoading = false;
-        this.data = this.data.map((item: any) => {
-          if (item._id == this.selectedTask._id) {
-            return { ...item, done: !this.selectedTask.done };
-          }
-          return item;
-        });
+        this.data = this.data.filter(
+          (obj: any) => obj._id != this.selectedTask._id
+        );
         this.closeDetailsModal();
       });
   }
