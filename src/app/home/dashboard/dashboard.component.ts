@@ -12,8 +12,12 @@ export class DashboardComponent implements OnInit {
   chartData: any;
   barChartData: any;
   lineChartLabels: any = [];
+  user: any;
 
-  constructor(private _api: ApiService) {}
+  constructor(private _api: ApiService) {
+    this.user = _api.getLoginUser();
+    console.log(this.user);
+  }
 
   ngOnInit(): void {
     this._api.dashboard().subscribe((res: any) => {

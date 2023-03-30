@@ -1,5 +1,11 @@
 <div class="p-4">
   <h5>All Done Tasks</h5>
   <app-loading *ngIf="loading"></app-loading>
-  <app-table [data]="data" [pending]="false" [skip]="skip"></app-table>
+  <app-table
+    [data]="data"
+    [pending]="false"
+    [skip]="skip"
+    [currentPage]="currentPage"
+    [dataLoading]="loading"
+  ></app-table>
 </div>

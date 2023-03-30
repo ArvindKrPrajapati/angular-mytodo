@@ -5,13 +5,18 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiService {
-  // url: string = 'http://localhost:3000/v1';
-  url: string = 'https://mytodo-api.onrender.com/v1';
+  url: string = 'http://localhost:3000/v1';
+  // url: string = 'https://mytodo-api.onrender.com/v1';
 
   upurl: string =
     'https://api.cloudinary.com/v1_1/shivraj-technology/image/upload';
 
   constructor(private _http: HttpClient) {}
+
+  getLoginUser() {
+    const _: any = localStorage.getItem('user');
+    return JSON.parse(_);
+  }
 
   token() {
     return localStorage.getItem('token');
@@ -64,7 +69,7 @@ export class ApiService {
   }
   getPendingTask(skip: number, limit: number) {
     return this._http.get(
-      this.url + '/todo/pending-todo?skip' + skip + '&limit=' + limit,
+      this.url + '/todo/pending-todo?skip=' + skip + '&limit=' + limit,
       {
         headers: new HttpHeaders({ Authorization: 'Bearer ' + this.token() }),
       }

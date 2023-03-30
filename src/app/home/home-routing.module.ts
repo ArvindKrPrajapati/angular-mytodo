@@ -29,7 +29,15 @@ const routes: Routes = [
         component: PreviousPendingComponent,
       },
       {
+        path: 'overall-pending/:page',
+        component: PreviousPendingComponent,
+      },
+      {
         path: 'overall-done',
+        component: PreviousDoneComponent,
+      },
+      {
+        path: 'overall-done/:page',
         component: PreviousDoneComponent,
       },
     ],

@@ -1,6 +1,7 @@
 import { HttpEventType } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/service/api/api.service';
 
@@ -11,6 +12,7 @@ import { ApiService } from 'src/app/service/api/api.service';
   providers: [NgbModalConfig, NgbModal],
 })
 export class TodaysTaskComponent implements OnInit {
+  @ViewChild('content') addModalRef: any;
   imageEvent: any;
   imageURL: string = '';
   task: string = '';
@@ -22,14 +24,19 @@ export class TodaysTaskComponent implements OnInit {
   selectedTask: any;
   isEdit: boolean = false;
   mdData: any;
+  defaultModalState: string = 'close';
 
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,
-    private _api: ApiService
+    private _api: ApiService,
+    private _activatedRoute: ActivatedRoute
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
+    this._activatedRoute.queryParams.subscribe((p: any) => {
+      this.defaultModalState = p.modal;
+    });
   }
 
   ngOnInit(): void {
@@ -38,6 +45,9 @@ export class TodaysTaskComponent implements OnInit {
         this.isLoading = false;
         this.data = res.data;
         this.convertIntoMultiDim(res.data);
+        if (this.defaultModalState == 'open') {
+          this.open(this.addModalRef);
+        }
       }
     });
   }

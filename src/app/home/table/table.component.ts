@@ -1,5 +1,6 @@
 import { HttpEventType } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/service/api/api.service';
 
@@ -12,6 +13,8 @@ export class TableComponent {
   @Input() data: any;
   @Input() pending: any;
   @Input() skip: number = 0;
+  @Input() currentPage: number = 1;
+  @Input() dataLoading: boolean = true;
   detailModalRef: any;
   selectedTask: any;
   isEdit: boolean = false;
@@ -22,7 +25,7 @@ export class TableComponent {
   imageURL: string = '';
   uploadingProgress: any;
   addModalRef: any;
-  date: any;
+  date: any = [];
 
   constructor(
     config: NgbModalConfig,

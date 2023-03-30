@@ -7,11 +7,11 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Sl No.</th>
-        <th scope="col">Task Description (If any)</th>
-        <th scope="col">Task Image (If any)</th>
-        <th scope="col">Created on</th>
-        <th scope="col">Updated on</th>
+        <th scope="col" style="white-space: nowrap">Sl No.</th>
+        <th scope="col">Task</th>
+        <th scope="col">Image</th>
+        <th scope="col" style="white-space: nowrap">Created on</th>
+        <th scope="col" style="white-space: nowrap">Updated on</th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +34,35 @@
       </tr>
     </tbody>
   </table>
+</div>
+<div class="mt-3" *ngIf="!dataLoading">
+  <nav>
+    <ul class="pagination justify-content-center">
+      <li class="page-item" *ngIf="currentPage > 1">
+        <a
+          class="page-link"
+          [routerLink]="[
+            pending ? '/overall-pending' : '/overall-done',
+            currentPage - 1
+          ]"
+          >prev</a
+        >
+      </li>
+      <li class="page-item active">
+        <a class="page-link">{{ currentPage }}</a>
+      </li>
+      <li class="page-item" *ngIf="data.length == 20">
+        <a
+          class="page-link"
+          [routerLink]="[
+            pending ? '/overall-pending' : '/overall-done',
+            currentPage + 1
+          ]"
+          >next</a
+        >
+      </li>
+    </ul>
+  </nav>
 </div>
 
 <!-- add modal -->
