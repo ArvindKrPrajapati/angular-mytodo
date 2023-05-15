@@ -6,9 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
   // url: string = 'http://localhost:3000/v1';
-  url: string = 'https://mytodo-api.onrender.com/v1';
+ // url: string = 'https://mytodo-api.onrender.com/v1';
   //url:string='https://todo-api-production-6796.up.railway.app/v1';
-  upurl: string =
+  url="https://mytodo-api.cyclic.app/v1"
+upurl: string =
     'https://api.cloudinary.com/v1_1/shivraj-technology/image/upload';
 
   constructor(private _http: HttpClient) {}
